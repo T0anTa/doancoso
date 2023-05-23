@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html >
+
+<html>
+<head>
+    <title>Trang Chủ</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*Chèn link Css của free template download *@
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    @*Chèn css thiết kế*@
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+
+    @*Chèn css font ký tự*@
+    <link href="~/Content/fontawesome-free-6.3.0-web/css/all.min.css" rel="stylesheet" />
+    @*Chèn link css, javascript nivoslider*@
+
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <link href="~/NivoSlider/default.css" rel="stylesheet" />
+
+    <script src="~/NivoSlider/jquery-1.7.1.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+
+</head>
+<body>   
+    <div id="ToanTrang">
+        <section class="blank">
+            <div class="flash">
+                @*Tạo div đăng nhập*@
+                <div class="DangKyDangNhap">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("DangXuat", "NguoiDung", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="nav navbar-nav navbar-right">
+
+                                Hello @User.Identity.Name
+                                <i class="fa-solid fa-user"></i>
+                                <a href="/NguoiDung/MyProFile">My ProFile</a>
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                <a href="/NguoiDung/DangXuat">Đăng Xuất</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                <div class="nav navbar-nav navbar-right">
+                    <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+                    @Html.ActionLink("Đăng Ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
+                    <i class="fa-solid fa-lock-open"></i>
+                    @Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung", null, htmlAttributes: new { @class = "DangNhap" })
+                </div>
+                    }
+                    @*<ul class="nav pull-right">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="dropdown">
+                <a style="color:black;font-weight:bold" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="halflings-icon white user"></i>Hello @User.Identity.Name
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-menu-title">
+                        <span>Account Settings</span>
+                    </li>
+                    <li><a href="/NguoiDung/MyProfile"><i class="halflings-icon user"></i> Thông tin cá nhân</a></li>
+                    <li><a href="@Url.Action("DangXuat","NguoiDung")"><i class="halflings-icon off"></i> Đăng Xuất</a></li>
+                </ul>
+            </li>
+
+        }*@
+                    @*else
+        {
+
+            <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+            @Html.ActionLink("Đăng Ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
+            <i class="fa-solid fa-lock-open"></i>
+            @Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung", null, htmlAttributes: new { @class = "DangNhap" })
+        }*@
+                    @*<ul class="nav pull-right" style="float:right;margin-top:-1px">
+            <li class="dropdown">
+                <div style="color: orangered;font-weight:bold">
+                    Hello @User.Identity.Name
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="/NguoiDung/MyProfile"><i class="halflings-icon off"></i> My Profile</a></li>
+                </ul>
+                <ul class="dropdown-menu">
+                    <li><a href="/NguoiDung/DangXuat"><i class="halflings-icon off"></i> Đăng Xuất</a></li>
+                </ul>
+            </li>
+        </ul>*@
+
+
+                </div>
+            </div>
+
+        </section>
+
+        @*Xây dựng div menu header*@
+
+        <div style="background-color:#426db5" class="flash success" id="DanhMuc">
+            @*Hộp thoại tìm kiếm*@
+            <div id="txtTimKiem">
+                @using (Html.BeginForm("KetQuaTimKiem", "TimKiem"))
+                {
+
+                    @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào từ khóa cần tìm" })
+                    @*Chèn vào image button hình ảnh*@
+                    <div id="imageSearch">
+                        <button type="submit"><img src="~/Content/Images/imgsearch.png" /></button>
+                    </div>
+                }
+            </div>
+            @*Munu bên phải header*@
+            <ul class="Menu">
+                <li><a href="@Url.Action("Index","Home")">Trang Chủ</a></li>
+
+
+
+                <li>@Html.Action("GioHangPartial", "GioHang")</li>
+
+            </ul>
+        </div>
+
+
+
+
+        <section id="MenuSlider">
+            <div id="divmenuLeft">
+                @*Chèn vào partialview sách mới*@
+                <div class="activity">
+                    @Html.Action("SachMoiPartial", "Sach")
+
+                </div>
+            </div>
+            @*Chèn div nivoslider*@
+            <div id="slider" class="nivoSlider">
+
+                <img src="~/Content/Images/1.png" data-thumb="~/Content/Images/1.png" />
+                <img src="~/Content/Images/2.png" data-thumb="~/Content/Images/2.png" />
+                <img src="~/Content/Images/3.png" data-thumb="~/Content/Images/3.png" />
+            </div>
+
+            <div style="clear:both"></div>
+        </section>
+        @*Div body*@
+        <div id="NoiDung">
+            @RenderBody()
+        </div>
+        <section>
+            @*Phần chủ đề *@
+            <div>
+                @Html.Action("ChuDePartial", "ChuDe")
+
+            </div>
+
+            <hr>
+
+
+
+
+
+
+        </section>
+        <div style="clear:both"></div>
+        @*Div nhà xuất bản*@
+        <section class="blank items">
+            <div id="divLeft">
+                <div class="item">
+                    <div class="item-info">
+                        @*Action partialView*@
+                        @Html.Action("NhaXuatBanPartial", "NhaXuatBan")
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="divRight">
+                @RenderSection("NoiDungBenPhai", false)
+            </div>
+            <div style="clear:both"></div>
+            <div>
+                <a href="#" class="button button-buy">CHÀO MỪNG CÁC BẠN ĐÃ ĐẾN VỚI SHOP</a>
+            </div>
+        </section>
+
+
+        @*Script chạy nivoslider*@
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('#slider').nivoSlider({
+                    controlNav: false,
+                    nextText: "",
+                    prevText: ""
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

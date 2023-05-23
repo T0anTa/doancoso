@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity
+@using DOANCOSO.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("DangXuat", "NguoiDung", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="nav navbar-nav navbar-right">
+            
+                Hello @User.Identity.GetUserName 
+            
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </div>
+    }
+}
+else
+{
+    <div class="nav navbar-nav navbar-right">
+        @Html.ActionLink("Đăng Ký", "DangKy", "NguoiDung", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        @Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </div>
+}

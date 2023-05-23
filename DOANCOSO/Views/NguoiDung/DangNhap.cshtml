@@ -1,0 +1,70 @@
+﻿
+@model DOANCOSO.ViewModel.LoginVM
+
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+
+<div class="dangnhap" style="margin-left:300px">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" ><h2>Đăng Nhập</h2></div>
+            
+            <div class="card-body">
+                @using (Html.BeginForm("DangNhap", "NguoiDung", FormMethod.Post))
+                {
+
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                            <span id="loiHoTen"></span>
+                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MatKhau)
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "MatKhau" })
+                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "badge badge-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.ValidationSummary()
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" style="background-color: #0099FF; margin-top: 10px; margin-left: 323px; " class="btn btn-success" > Đăng Nhập</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card .card-header {
+        color: black;
+        background-color: gainsboro;
+        
+        border-bottom:solid;
+    }
+    
+    .card {
+        width: 500px;
+        border: 2px solid black;
+    }
+   
+    .form-group input {
+        margin-left: 20px;
+        background-color: white;
+        border: 2px solid black;
+    }
+    form label {
+        color: black;
+    }
+</style>
+

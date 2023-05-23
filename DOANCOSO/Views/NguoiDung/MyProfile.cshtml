@@ -1,0 +1,82 @@
+﻿@model DOANCOSO.Identity.AppUser
+
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h2 style="font-weight:bold; text-align:center;color:blue;" >MyProfile</h2>
+
+<div>
+    
+    <hr />
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center;font-weight:bold;color:blue;">
+    
+    @Html.ActionLink("Trở Lại", "Index")
+</p>
+<style>
+    .dl-horizontal dd {
+        float: right;
+        margin-top: -29px;
+        margin-right: 30px;
+        font-weight:bold;
+        color:black;
+    }
+    .dl-horizontal dt {
+        margin-left: 10px;
+        font-weight:bold;
+
+        color:blue;
+    }
+    .dl-horizontal {
+        margin-left: 400px;
+        border: 2px solid black;
+        margin-right: 434px;
+    }
+
+</style>

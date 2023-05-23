@@ -1,0 +1,65 @@
+﻿@using DOANCOSO.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<h2 style="text-align:center;color:black;">Giỏ hàng của bạn</h2>
+<table style="margin-left: 100px" id="divGioHang" >
+    <tr>
+        <td style="width:90px;">Mã Sách</td>
+
+        <td style="width:600px;">Tên Sách</td>
+
+        <td style="width:90px;">Ảnh Bìa</td>
+
+        <td style="width:90px;">Đơn Giá</td>
+
+        <td style="width:90px;">Số Lượng</td>
+
+        <td style="width:90px;">Thành Tiền</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.iMaSach</td>
+
+            <td>@item.sTenSach</td>
+
+            <td><a href="@Url.Action("XemChiTiet","Sach", new {@MaSach=item.iMaSach})"><img src="@Url.Content("~/imagesProducts/"+item.sAnhBia)" width="70" height="70" /></a></td>
+
+            <td>
+                @String.Format("{0:0,0}", item.dDonGia) VND
+            </td>
+            <td>@item.iSoLuong</td>
+
+            <td>@String.Format("{0:0,0}", item.ThanhTien) VND</td>
+
+        </tr>
+
+
+    }
+    <tr>
+        <td colspan="6" style="text-align:right; color:red">
+            @Html.ActionLink("Chỉnh Sửa Giỏ Hàng", "SuaGioHang")
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" style="text-align:right; color:red">
+            @using (Html.BeginForm("DatHang", "GioHang"))
+            {
+                <button type="submit" style="background-color: #0099FF">Đặt Hàng</button>
+            }
+        </td>
+    </tr>
+</table>
+<style>
+    #divGioHang tr td{
+        
+        color:black;
+    }
+    
+</style>
+
+

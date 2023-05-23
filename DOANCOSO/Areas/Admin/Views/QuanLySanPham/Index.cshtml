@@ -1,0 +1,90 @@
+﻿
+@model IEnumerable<DOANCOSO.Models.Sach>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Quản Lý Sản Phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới Sách", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaChuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSach)
+            </td>
+            <td>
+                <div id="DonGia" style="color:orange"><font color="Green">Giá: </font>@String.Format("{0:0,0}", @item.GiaBan) VND </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                <div id="AnhBia"><img src="@Url.Content("~/imagesProducts/"+item.AnhBia)" width="100" height="150" /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayCapNhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhaXuatBan.TenNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ChinhSua", new { @MaSach = item.MaSach }) |
+                @Html.ActionLink("Details", "HienThi", new { @MaSach = item.MaSach }) |
+                @Html.ActionLink("Delete", "Xoa", new { @MaSach = item.MaSach })
+            </td>
+        </tr>
+    }
+
+</table>
+

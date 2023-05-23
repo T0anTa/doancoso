@@ -1,0 +1,91 @@
+﻿/*SỬ dụng dộ rộng toàn trang*/
+#ToanTrang {
+    position: relative;
+}
+/*Thiết kế link đăng ký đăng nhập*/
+.DangKyDangNhap{
+    float:right;
+    margin-top:-1%;
+}
+.DangKyDangNhap a:hover {
+    text-decoration:none;
+    color:green;
+}
+
+.tenTrangWeb {
+    margin-top: -1%;
+    float: left;
+}
+/*css DanhMuc*/
+#DanhMuc {
+    height: 30px;
+}
+div#NoiDung{
+    background-color:white;
+}
+/*Css cho menu header*/
+.Menu {
+    float: right;
+}
+    .Menu li {
+    display: inline;
+    border-right: solid 1px rgba(0,0,0,.5);
+    padding: 20px;
+    padding-top: 21px;
+    padding-bottom: 22px;
+    
+}
+    .Menu a:hover {
+        text-decoration: none;
+        color:red;
+    }
+/*css divTimKiem*/
+div#txtTimKiem {
+    float: left;
+    margin-left:5%;
+    
+}
+    div#txtTimKiem input {
+        height: 0;
+        margin-left: 200px;
+        width: 450px;
+    }
+
+div#imageSearch button {
+    float: right;
+    margin-right: -50px;
+    margin-top: -32px;
+    padding: 1px 10px 0 10px;
+    height: 31.9px;
+}
+
+
+#divmenuLeft {
+    float: left;
+    
+}
+/*css cho nivoslider*/
+#slider {
+    float: right;
+    width: 800px;
+    height: 360px;
+}
+
+    div#slider img{
+        width:800px;
+        height:360px;
+    }
+#divLeft{
+    width:30%;
+    float:left;
+}
+    #divLeft .item{
+        width:100%;
+    }
+    #divRight {
+        float: right;
+        width: 70%;
+    }
+
+
+

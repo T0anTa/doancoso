@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<DOANCOSO.Models.Sach>
+<link href="~/Content/TrangChu.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+@*divBoydy trang index*@
+<h2 style="margin-left:2%; font-weight:normal;color:black">Kết Quả Tìm Kiếm</h2>
+@ViewBag.ThongBao
+<hr />
+@*
+    Div divBody chứa div SanPham
+    div SanPham chứa div AnhBia, ThongTin
+    div ThongTin chứa div Ténach, DonGia
+*@
+
+<div id="divBody" style="background-color:white">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","Sach", new {@masach = item.MaSach})"> <div id="AnhBia"><img src="@Url.Content("~/imagesProducts/"+item.AnhBia)" width="100" height="150" /></div></a>
+            <div id="ThongTin">
+                @if (item.TenSach.Length < 35)
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach</div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach.Substring(0, 35) ...</div>
+                }
+                <div id="DonGia" style="color:orange"><font color="Green">Giá: </font>@String.Format("{0:0,0}", @item.GiaBan) VND </div>
+            </div>
+            <div id="GioHang">
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.MaSach, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" style="cursor: pointer; background-color: rgba(255, 179, 0, 1);" value="Mua Hàng" id="btnGioHang" class="btn btn-primary" />
+                }
+            </div>
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>
+<div style="clear:both"></div>
+
+
+

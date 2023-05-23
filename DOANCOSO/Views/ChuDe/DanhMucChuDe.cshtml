@@ -1,0 +1,14 @@
+﻿@using DOANCOSO.Models;
+@model List<ChuDe>
+@{
+    ViewBag.Title = "DanhMucChuDe";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+@*Hien thi danh muc chu de*@
+@foreach (var item in Model)
+{
+    <a id="btnChuDe" style="width:250px; font-size:11pt;color:aliceblue;background-color:#0055bd;text-decoration:none" href="@Url.Action("SachTheoChuDe", new {@MaChuDe=item.MaChuDe})" class="button button-submit">@item.TenChuDe</a>
+    <br />
+    <br />
+}
