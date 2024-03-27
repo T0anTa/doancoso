@@ -1,0 +1,57 @@
+﻿@model DOANCOSO.ViewModel.ChiTietDonHangVM
+@{
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<div class="container">
+    <h2 style="text-align:center;font-weight:bold;color:black">Thông Tin Đơn Hàng</h2>
+    <p style="text-align:center;font-weight:bold;">Cảm ơn bạn đã đặt hàng sản phẩm của chúng tôi</p>
+
+    <h3 style="color:black">Thông Tin Đặt Hàng</h3>
+    <p><strong>Mã Đơn Hàng:</strong> @ViewBag.MaDH</p>
+    <p><strong>Ngày Đặt:</strong> @ViewBag.NgayDH</p>
+    <p><strong>Phương Thức Thanh Toán:</strong> @ViewBag.PhuongThucThanhToan</p>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:600px">Sách</th>
+                <th style="width:90px">Số Lượng</th>
+                <th style="width:90px">Giá</th>
+                <th style="width:200px">Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.SachItems)
+            {
+                <tr>
+                    <td>@item.sTenSach</td>
+                    <td>@item.iSoLuong</td>
+                    <td>@item.dDonGia</td>
+                    <td>@String.Format("{0:0,0}", item.iSoLuong * item.dDonGia) VND</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>    
+    <p style="margin-left:690px;"><strong>Tổng Tiền:</strong> @String.Format("{0:0,0}", ViewBag.TongTien) VND</p>
+    <p style="color:blue;font-weight:bold;">@Html.ActionLink("Trở về", "Index","Home")</p>
+</div>
+
+<style>
+    .container p strong{
+        color:black;
+        font-weight:bold;
+    }
+    .container p {
+        color: black;
+    }
+    .container th {
+        color: black;
+        font-weight: bold;
+    }
+    .container td {
+        color: black;
+        
+    }
+</style>

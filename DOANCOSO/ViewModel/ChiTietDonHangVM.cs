@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DOANCOSO.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,9 +14,12 @@ namespace DOANCOSO.ViewModel
         public int MaDH { get; set; }
         [Display(Name = "Ngày Đặt Hàng")]
         public DateTime NgayDH { get; set; }
+        [StringLength(20)]
+        [Display(Name = "Phương Thức Thanh Toán")]
+        public string PhuongThucThanhToan { get; set; }
         [Display(Name = "Tổng Tiền")]
         public decimal TongTien { get; set; }
-        public List<OrderItemVM> DSDH { get; set; }
+        public List<GioHang> SachItems { get; set; }
     }
 
     public class OrderItemVM

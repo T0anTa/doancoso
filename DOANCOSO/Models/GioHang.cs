@@ -1,6 +1,7 @@
 ﻿using Microsoft.Owin.Security.Provider;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,10 @@ namespace DOANCOSO.Models
         public string sTenSach { get; set; }
         public string sAnhBia { get; set; }
         public double dDonGia { get; set; }
+        
         public int iSoLuong { get; set; }
+        
+
         public double ThanhTien
         {
             get { return iSoLuong * dDonGia; }

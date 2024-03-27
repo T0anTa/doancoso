@@ -32,7 +32,7 @@
                                 @Html.AntiForgeryToken()
 
                                 <div class="nav navbar-nav navbar-right">
-                                    Hello admin @User.Identity.Name
+                                    Hello @User.Identity.Name
                                     <i class="fa-solid fa-user"></i>
                                     <a href="/NguoiDung/MyProFile">My ProFile</a>
                                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
@@ -64,14 +64,14 @@
                         <li><a href="@Url.Action("Index","QuanLyKhachHang")"><span class="hidden-tablet"> Quản Lý Khách Hàng</span></a></li>
 
 
-                        <li>
+                        @*<li>
                             <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>
                             <ul>
                                 <li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 1</span></a></li>
                                 <li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 2</span></a></li>
                                 <li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 3</span></a></li>
                             </ul>
-                        </li>
+                        </li>*@
 
                     </ul>
                 </div>

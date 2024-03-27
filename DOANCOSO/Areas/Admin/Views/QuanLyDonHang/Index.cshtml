@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DOANCOSO.Models.DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Quản Lý Đơn Hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDonHang)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDonHang)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+
+        
+        <td>
+
+            @Html.ActionLink("Chi Tiết Đơn Hàng", "ChiTietDonHang", new { @MaDH = item.MaDonHang }) |
+            @Html.ActionLink("Delete", "Xoa", new { @MaDH = item.MaDonHang })
+        </td>
+        
+    </tr>
+}
+
+</table>

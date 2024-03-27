@@ -172,6 +172,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyDonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyKhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
@@ -206,6 +208,10 @@
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Metadata\ChiTietDonHang.metadata.cs" />
+    <Compile Include="Models\Metadata\DonHang.metadata.cs" />
+    <Compile Include="Models\Metadata\Sach.metadata.cs" />
+    <Compile Include="Models\Metadata\AspNetUsers.metadata.cs" />
     <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\QuanLyBanSachModel.cs" />
     <Compile Include="Models\Sach.cs" />
@@ -2476,7 +2482,6 @@
     <Content Include="Areas\Admin\Views\QuanLySanPham\HienThi.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLySanPham\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLySanPham\ThemMoi.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLySanPham\Xoa.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Content\fontawesome-free-6.3.0-web\less\brands.less" />
@@ -2545,6 +2550,12 @@
     <Content Include="Content\TemplateAdmin\font\glyphiconshalflings-regular.ttf" />
     <Content Include="Content\TemplateAdmin\font\glyphiconshalflings-regular.woff" />
     <Content Include="Content\TemplateAdmin\README.md" />
+    <Content Include="Areas\Admin\Views\QuanLyDonHang\Xoa.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyKhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLySanPham\Xoa.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDonHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDonHang\ChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyKhachHang\Xoa.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2609,7 +2620,7 @@
     <Content Include="Views\Sach\XemChiTiet.cshtml" />
     <Content Include="Views\TimKiem\KetQuaTimKiem.cshtml" />
     <Content Include="Views\NguoiDung\MyProfile.cshtml" />
-    <Content Include="Views\GioHang\ChiTietDonHang.cshtml" />
+    <Content Include="Views\GioHang\ThongTinDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

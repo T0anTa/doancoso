@@ -1,0 +1,61 @@
+﻿@model DOANCOSO.Models.DonHang
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn muốn xóa đơn hàng này?</h3>
+<div>
+    <h4>Danh Sách Đơn Hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDonHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDonHang)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuongThucThanhToan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input  type="submit" value="Delete" class="btn btn-default" style="background-color:blue" /> |
+            <a href="/Admin/QuanLyDonHang" style="color:blue;">Trở Về</a>
+        </div>
+    }
+</div>

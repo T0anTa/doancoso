@@ -1,0 +1,41 @@
+﻿@model DOANCOSO.Models.DonHang
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1 style="text-align:center;font-weight:bold">Chi Tiết Đơn Hàng</h1>
+<p>Mã đơn hàng: @Model.MaDonHang</p>
+<p>Ngày đặt: @Model.NgayDat</p>
+<p>Mã khách hàng: @Model.UserId</p>
+<p>Phương thức thanh toán: @Model.PhuongThucThanhToan</p>
+<h2 style="font-weight:bold">Thông Tin Sách </h2>
+<table>
+    <tr>
+        <th style="width:500px">Tên sách</th>
+        <th style="width:100px">Số lượng</th>
+        <th style="width:100px">Đơn giá</th>
+        <th style="width:100px">Thành Tiền</th>
+    </tr>
+
+    @foreach (var item in Model.ChiTietDonHang)
+    {
+        decimal thanhTien = (item.SoLuong ?? 0) * decimal.Parse(item.DonGia ?? "0");
+        <tr>
+            <td style="width:600px">@item.Sach.TenSach</td>
+            <td style="width:100px">@item.SoLuong</td>
+            <td style="width:100px">@String.Format("{0:0,0}", @item.DonGia) VND</td>
+            <td style="width:100px">@thanhTien.ToString("N0") VND</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="3" style="text-align:right;font-weight:bold">Tổng cộng:</td>
+        <td style="font-weight:bold">@String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(item => item.SoLuong * decimal.Parse(item.DonGia))) VND</td>
+    </tr>
+</table>
+<div>
+    <a href="/Admin/QuanLyDonHang" style="color:blue;">Trở Về</a>
+
+</div>
+
+

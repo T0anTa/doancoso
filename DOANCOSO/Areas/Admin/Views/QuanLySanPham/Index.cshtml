@@ -39,9 +39,7 @@
         <th>
             @Html.DisplayNameFor(model => model.MaChuDe)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Moi)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -75,13 +73,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Moi)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "ChinhSua", new { @MaSach = item.MaSach }) |
-                @Html.ActionLink("Details", "HienThi", new { @MaSach = item.MaSach }) |
-                @Html.ActionLink("Delete", "Xoa", new { @MaSach = item.MaSach })
+                @Html.ActionLink("Chỉnh Sửa", "ChinhSua", new { @MaSach = item.MaSach }) |
+                @Html.ActionLink("Hiển Thị", "HienThi", new { @MaSach = item.MaSach }) |
+                @Html.ActionLink("Xóa", "Xoa", new { @MaSach = item.MaSach })
             </td>
         </tr>
     }

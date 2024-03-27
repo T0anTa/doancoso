@@ -50,23 +50,14 @@ namespace DOANCOSO.Controllers
             }
         }
         //Cập nhật giỏi hàng
-        public ActionResult CapNhatGioHang(int iMaSP, FormCollection f)
+        public ActionResult CapNhatGioHang(int iMaSP, int newAmount)
         {
-            //Kiemtr masp
-            Sach sach = db.Sach.SingleOrDefault(n => n.MaSach == iMaSP);
-            //Nếu get sai masp thì sẽ trả về trang lỗi 404
-            if (sach == null)
+            // tìm carditem muon sua
+            List<GioHang> ShoppingCart = Session["GioHang"] as List<GioHang>;
+            GioHang EditSoLuong = ShoppingCart.FirstOrDefault(m => m.iMaSach == iMaSP);
+            if (EditSoLuong != null)
             {
-                Response.StatusCode = 404;
-            }
-            //Lấy giỏ hàng ra từ sesstion
-            List<GioHang> lstGioHang = LayGioHang();
-            //Kiểm tra sp có tồn tại trong sesstion["GioHang"]
-            GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSach == iMaSP);
-            //Nếu mà tồn tại thì ta cho sửa số lượng
-            if (sp != null)
-            {
-                sp.iSoLuong = int.Parse(f["txtSoLuong"].ToString());
+                EditSoLuong.iSoLuong = newAmount;
             }
             return RedirectToAction("GioHang");
         }
@@ -175,12 +166,11 @@ namespace DOANCOSO.Controllers
             }
             //Thêm đơn đặt hàng
             DonHang ddh = new DonHang();
-            string userId = User.Identity.GetUserId();
-            
+            string userId = User.Identity.GetUserId();            
             
             ddh.UserId = userId;
             ddh.NgayDat = DateTime.Now;
-            
+            ddh.PhuongThucThanhToan = "COD";
             db.DonHang.Add(ddh);
             db.SaveChanges();
 
@@ -201,12 +191,15 @@ namespace DOANCOSO.Controllers
             db.SaveChanges();
             Session["GioHang"] = null;
             // Hiển thị thông tin đơn hàng
-            ViewBag.OrderId = ddh.MaDonHang;
-            ViewBag.OrderDate = ddh.NgayDat;
-            ViewBag.OrderTotal = gioHang.Sum(item => item.iSoLuong * item.dDonGia);
-
-            return View("ChiTietDonHang");
+            ViewBag.MaDH = ddh.MaDonHang;
+            ViewBag.NgayDH = ddh.NgayDat;
+            ViewBag.PhuongThucThanhToan = ddh.PhuongThucThanhToan;
+            ViewBag.TongTien = gioHang.Sum(item => item.iSoLuong * item.dDonGia);
+            ViewBag.SachItems = gioHang;
+            
+            return View("ThongTinDonHang");
            
         }
+       
     }
 }

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DOANCOSO.Models.AspNetUsers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Quản Lý Khách Hàng</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+
+
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+
+
+        <td>
+            
+            @Html.ActionLink("Xóa", "Xoa", new { MaKH = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

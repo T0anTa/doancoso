@@ -18,17 +18,14 @@ namespace DOANCOSO.Models
         [Key]
         public int MaDonHang { get; set; }
 
-        public int? DaThanhToan { get; set; }
-
-        public int? TinhTrangGiaoHang { get; set; }
-
         public DateTime? NgayDat { get; set; }
 
-        public DateTime? NgayGiao { get; set; }
-
         [Required]
-        [StringLength(128)]
+        [StringLength(200)]
         public string UserId { get; set; }
+
+        [StringLength(20)]
+        public string PhuongThucThanhToan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }
